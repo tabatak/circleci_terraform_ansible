@@ -5,6 +5,13 @@ variable "region" {
 }
 variable "key_pair_name" {}
 
+terraform {
+  backend "s3" {
+    bucket = "mybucket"
+    key    = "path/to/my/key"
+    region = "ap-northeast-1"
+  }
+}
 
 provider "aws" {
     access_key = "${var.access_key}"

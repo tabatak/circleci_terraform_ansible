@@ -19,10 +19,5 @@ dependencies:
     - ~/.local/bin
 
 test:
-  pre:
-    - terraform remote config -backend=S3 -backend-config="bucket=terraform" -backend-config="key=terraform.tfstate"
-      terraform remote pull
   override:
     - terraform plan
-  post:
-    - terraform push
