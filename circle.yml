@@ -1,0 +1,22 @@
+machine:
+  environment:
+    S3_BUCKET: terraform
+    AWS_DEFAULT_REGION: ap-northeast-1
+    TERRAFORM_VER: 0.9.2
+
+dependencies:
+  override:
+      - |
+      if [[ ! -f ~/.local/bin/terraform ]]; then
+        mkdir -p ~/.local/bin
+        cd ~/.local/bin
+        wget "https://releases.hashicorp.com/terraform/${TERRAFORM_VER}/terraform_${TERRAFORM_VER}_linux_amd64.zip"
+        unzip *.zip
+        rm *.zip
+      fi
+  cache_directories:
+    - ~/.local/bin
+
+test:
+  override:
+    - echo "test"

@@ -80,29 +80,4 @@ resource "aws_eip" "web" {
     instance = "${aws_instance.web.id}"
     vpc = true
 
-    provisioner "file" {
-        source = "web/index.html"
-        destination = "/tmp/index.html"
-        connection {
-            host = "${self.public_ip}"
-            type = "ssh"
-            user = "ec2-user"
-            private_key = "${file(var.pvivate_key_path)}"
-        }
-    }
-
-    provisioner "remote-exec" {
-        inline = [
-            "sudo yum install -y httpd",
-            "sudo cp /tmp/index.html /var/www/html",
-            "sudo service httpd start",
-            "sleep 10"
-        ]
-        connection {
-            host = "${self.public_ip}"
-            type = "ssh"
-            user = "ec2-user"
-            private_key = "${file(var.pvivate_key_path)}"
-        }
-    }
 }
