@@ -7,7 +7,7 @@ variable "key_pair_name" {}
 
 terraform {
   backend "s3" {
-    bucket = "mybucket"
+    bucket = "tf-ci"
     key    = "path/to/my/key"
     region = "ap-northeast-1"
   }
