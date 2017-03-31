@@ -3,6 +3,7 @@ machine:
     S3_BUCKET: terraform
     AWS_DEFAULT_REGION: ap-northeast-1
     TERRAFORM_VER: 0.9.2
+    PATH: "${HOME}/.local/bin:${PATH}"
 
 dependencies:
   override:
