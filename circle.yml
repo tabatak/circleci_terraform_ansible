@@ -19,5 +19,7 @@ dependencies:
     - ~/.local/bin
 
 test:
+  pre:
+    - terraform init
   override:
     - terraform plan
