@@ -4,7 +4,6 @@ variable "region" {
   default = "ap-northeast-1"
 }
 variable "key_pair_name" {}
-variable "pvivate_key_path" {}
 
 
 provider "aws" {
