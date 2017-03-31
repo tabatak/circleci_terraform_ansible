@@ -8,9 +8,9 @@ variable "pvivate_key_path" {}
 
 
 provider "aws" {
-    access_key = "${var.access_key}"
-    secret_key = "${var.secret_key}"
-    region = "${var.region}"
+    access_key = "${AWS_ACCESS_KEY}"
+    secret_key = "${AWS_SECRET_ACCESS_KEY}"
+    region = "ap-northeast-1"
 }
 
 resource "aws_vpc" "main" {
@@ -66,7 +66,7 @@ resource "aws_security_group" "allow_ssh_httpd" {
 resource "aws_instance" "web" {
     depends_on = ["aws_internet_gateway.igw"]
     ami = "ami-56d4ad31"
-    key_name = "${var.key_pair_name}"
+    key_name = "${KEY_PAIR_NAME}"
     subnet_id = "${aws_subnet.main.id}"
     vpc_security_group_ids = ["${aws_security_group.allow_ssh_httpd.id}"]
     instance_type = "t2.micro"
