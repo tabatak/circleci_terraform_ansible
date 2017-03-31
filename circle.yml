@@ -7,11 +7,13 @@ machine:
 dependencies:
   override:
     - |
-      mkdir -p ~/.local/bin
-      cd ~/.local/bin
-      wget "https://releases.hashicorp.com/terraform/${TERRAFORM_VER}/terraform_${TERRAFORM_VER}_linux_amd64.zip"
-      unzip *.zip
-      rm *.zip
+      if [[ ! -f ~/.local/bin/terraform ]]; then
+        mkdir -p ~/.local/bin
+        cd ~/.local/bin
+        wget "https://releases.hashicorp.com/terraform/${TERRAFORM_VER}/terraform_${TERRAFORM_VER}_linux_amd64.zip"
+        unzip *.zip
+        rm *.zip
+      fi
   cache_directories:
     - ~/.local/bin
 
