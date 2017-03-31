@@ -65,7 +65,7 @@ resource "aws_security_group" "allow_ssh_httpd" {
 resource "aws_instance" "web" {
     depends_on = ["aws_internet_gateway.igw"]
     ami = "ami-56d4ad31"
-    key_name = "${var.KEY_PAIR_NAME}"
+    key_name = "${var.key_pair_name}"
     subnet_id = "${aws_subnet.main.id}"
     vpc_security_group_ids = ["${aws_security_group.allow_ssh_httpd.id}"]
     instance_type = "t2.micro"
