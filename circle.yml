@@ -25,5 +25,5 @@ test:
     - terraform plan
   post:
     - terraform apply
-    - terraform destroy
+    - terraform destroy -force
 
